@@ -1,2 +1,2 @@
-# millionsongtestset
+# Million Song Test Set
 Extracted data from the intersection of the Million Song Dataset's 10,000-song subset, the Tagtraum genre "ground truth" dataset, and the musiXmatch lyrics dataset. This combined dataset is designed to help researchers develop genre-classification algorithms and statistical analysis methods for the portion of the Million Song Dataset for which there are reliable lyric information and user-genereated genre tags tied to specific songs.
