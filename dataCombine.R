@@ -56,3 +56,20 @@ cor(d$duration, d$tempo)
 cor(d$duration, d$end_of_fade_in)
 cor(d$loudness, d$duration)
 
+fit <- aov(d$duration ~ d$genre)
+summary(fit)
+tuk <- TukeyHSD(fit)
+tuk
+plot(tuk)
+
+fit <- aov(d$year ~ d$genre)
+summary(fit)
+tuk <- TukeyHSD(fit)
+tuk
+plot(tuk)
+
+fit <- aov(d$loudness ~ d$genre)
+summary(fit)
+tuk <- TukeyHSD(fit)
+tuk
+plot(tuk)
