@@ -2,6 +2,8 @@ from sklearn.linear_model import *
 import csv
 import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
+import pylab
 
 # Categorical: mode, key, topic, genre
 
@@ -14,7 +16,7 @@ def decategorize(df):
         df = df.drop(cat, axis=1)
         df = pd.concat([df, new_df], axis=1)
 
-        return df
+    return df
   
 
 def main():
@@ -25,9 +27,12 @@ def main():
 
     print df_decat.columns.values
 
-    lr = LogisticRegression()
-    lr.fit(df_decat.ix[:,1:].values, df_decat['genre'].values)
+    X = df_decat.ix[:,1:].values
+    y = df_decat['genre'].values
 
-    
+    model = LogisticRegression()
+    model = model.fit(X,y)
+
+    print model.score(X,y)
 
 main()
