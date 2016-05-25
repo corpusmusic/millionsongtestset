@@ -3,7 +3,7 @@ top <- read.csv('MSDSubset-topics.csv')
 summary(top)
 summary(msd)
 unique(top$genre)
-table(top[top$genre=='World',]$topic)
+table(top[top$genre=='Rock',]$topic)
 
 msd$tid[1:20]
 top$tid[1:20]
@@ -29,6 +29,7 @@ write.csv(d, file = 'MSD_master_data.csv')
 
 ## Analysis
 
+d <- read.csv('MSD_master_data.csv')
 sort(unique(d$genre))
 colnames(d)
 plot(d$loudness~d$genre)
@@ -49,8 +50,9 @@ class(d$duration)
 chisq.test(d$genre, d$topic)
 chisq.test(d$genre, d$key)
 chisq.test(d$genre, d$mode)
-chisq.test(d$genre, d$topic)
-chisq.test(d$genre, d$topic)
+chisq.test(d$genre, d$topic, simulate.p.value = TRUE)
+chisq.test(d$genre, d$key, simulate.p.value = TRUE)
+chisq.test(d$genre, d$mode, simulate.p.value = TRUE)
 
 cor(d$duration, d$tempo)
 cor(d$duration, d$end_of_fade_in)
