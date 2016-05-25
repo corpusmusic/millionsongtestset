@@ -76,10 +76,12 @@ tuk <- TukeyHSD(fit)
 tuk
 plot(tuk)
 
-
+#Creating .csv's for PCA Analysis
 colnames(d)
-d$X
 pcaPrepNG <- cbind(d$end_of_fade_in, d$mode, d$time_signature, d$key, d$start_of_fade_out, d$year, d$duration, d$loudness, d$tempo, d$topic)
 pcaPrepWG <- cbind(d$end_of_fade_in, d$mode, d$time_signature, d$key, d$start_of_fade_out, d$year, d$duration, d$loudness, d$tempo, d$topic, d$genre)
+pcaPrepCont <- cbind(d$end_of_fade_in, d$time_signature, d$start_of_fade_out, d$year, d$duration, d$loudness, d$tempo)
+
 write.csv(pcaPrepNG, file="PCANoGenre.csv")
 write.csv(pcaPrepWG, file="PCAWithGenre.csv")
+write.csv(pcaPrepCont, file="PCACont.csv")
