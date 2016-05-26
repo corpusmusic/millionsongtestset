@@ -28,6 +28,7 @@ def main():
     lr = LogisticRegression()
     lr.fit(df_decat.ix[:,1:].values, df_decat['genre'].values)
 
+
     
 
 main()
