@@ -2,8 +2,8 @@ from sklearn.linear_model import *
 import csv
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
-import pylab
+from sklearn.cross_validation import train_test_split
+from sklearn import metrics
 
 # Categorical: mode, key, topic, genre
 
@@ -25,14 +25,25 @@ def main():
 
     df_decat = decategorize(df)
 
-    print df_decat.columns.values
-
     X = df_decat.ix[:,1:].values
     y = df_decat['genre'].values
 
     model = LogisticRegression()
     model = model.fit(X,y)
 
-    print model.score(X,y)
+    print (model.score(X,y))
+
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=0)
+    model2 = LogisticRegression()
+    model2.fit(X_train, y_train)
+
+    predicted = model2.predict(X_test)
+    print (predicted)
+
+    probs = model2.predict_proba(X_test)
+    print (probs)
+
+    # generate evaluation metrics
+    print metrics.accuracy_score(y_test, predicted)
 
 main()
